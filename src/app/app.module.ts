@@ -11,6 +11,7 @@ import {MatDialogModule} from '@angular/material';
 import {AppComponent} from './app.component';
 import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
+import {MatSliderModule} from '@angular/material';
 import {MatCheckboxModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -60,6 +61,7 @@ import {LoginComponent} from './login/login.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSliderModule,
     MatCheckboxModule,
     FormsModule,
     ReactiveFormsModule,

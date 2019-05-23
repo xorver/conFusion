@@ -36,18 +36,45 @@
   </div>
 
   <div fxFlex="40" *ngIf="dish">
-    <mat-list>
-      <h3>Comments</h3>
-      <mat-list-item *ngFor="let comment of dish.comments">
-        <h4 matLine> {{comment.comment}} </h4>
-        <p matLine> {{comment.rating}} Stars</p>
-        <p matLine>
-          <span> -- {{comment.author}} {{comment.date | date}} </span>
+    <div class="container">
+      <mat-list class="full-width">
+        <h3>Comments</h3>
+        <mat-list-item *ngFor="let comment of dish.comments">
+          <h4 matLine> {{comment.comment}} </h4>
+          <p matLine> {{comment.rating}} Stars</p>
+          <p matLine>
+            <span> -- {{comment.author}} {{comment.date | date}} </span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="container">
+      <form class="full-width" novalidate [formGroup]="commentForm" #cform="ngForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field class="half-width">
+            <input matInput formControlName="author" placeholder="Name" type="text" required>
+            <mat-error *ngIf="formErrors.author">
+              {{ formErrors.author }}
+            </mat-error>
+          </mat-form-field>
+          <mat-slider formControlName="rating" step="1" min="1" max="5" value="5"></mat-slider>
         </p>
-      </mat-list-item>
-    </mat-list>
-    <div fxFlex [hidden]="dish">
-      <mat-spinner></mat-spinner> <h4>Loading . . . Please Wait!</h4>
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput formControlName="comment" placeholder="Your Comment"></textarea>
+            <mat-error *ngIf="formErrors.comment">
+              {{ formErrors.comment }}
+            </mat-error>
+          </mat-form-field>
+        </p>
+
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid">Submit</button>
+      </form>
+
+      <div fxFlex [hidden]="dish">
+        <mat-spinner></mat-spinner> <h4>Loading . . . Please Wait!</h4>
+      </div>
     </div>
   </div>
 
