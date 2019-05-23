@@ -34,6 +34,8 @@ import {PromotionService} from './services/promotion.service';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {LeaderService} from './services/leader.service';
 import {LoginComponent} from './login/login.component';
+import {HttpClientModule} from '@angular/common/http';
+import {baseURL} from './shared/baseurl';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import {LoginComponent} from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
@@ -72,7 +75,8 @@ import {LoginComponent} from './login/login.component';
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    {provide: 'BaseURL', useValue: baseURL}
   ],
   entryComponents: [
     LoginComponent
